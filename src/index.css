@@ -99,7 +99,3 @@ button:focus-visible {
   align-items: center;
   gap: 20px;
 }
-
-.table {
-  display: none;
-}
