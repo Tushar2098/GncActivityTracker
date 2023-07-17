@@ -58,7 +58,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -72,6 +72,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+*/
 
 
 /* USER STYLES */
@@ -98,4 +100,10 @@ button:focus-visible {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.tickLabel {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 12px;
 }

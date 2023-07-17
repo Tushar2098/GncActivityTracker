@@ -25,24 +25,12 @@ export default function ResizableBox({
     >
       {resizable ? (
         <ReactResizableBox width={width} height={height}>
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-            }}
-            className={className}
-          >
+          <div style={{ width: '100%', height: '100%' }} className={className}>
             {children}
           </div>
         </ReactResizableBox>
       ) : (
-        <div
-          style={{
-            width: `${width}px`,
-            height: `${height}px`,
-          }}
-          className={className}
-        >
+        <div style={{ width: `${width}px`, height: `${height}px` }} className={className}>
           {children}
         </div>
       )}

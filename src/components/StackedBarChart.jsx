@@ -11,8 +11,13 @@ export default function StackedBarChart({ data }) {
   }
 
   return (
-    <section data-testid="chartContainer">
-      <h2>Activity Tracker</h2>
+    <section data-testid='chartContainer'>
+      <h2>
+        Activity Tracker <span style={{ color: 'sandybrown' }}>(YMHT Hindi Digital Center)</span>
+      </h2>
+      <p style={{ color: '#D32F2F' }}>
+        <strong>Deadline:</strong> 11<sup>th</sup> September 2023
+      </p>
       <ResizableBox>
         <Chart
           options={{

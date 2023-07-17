@@ -3,6 +3,8 @@ export const NAMES = [
   'Ramkrishna Godait',
   'Shubham  Patiyal',
   'vinayak',
+  'Kartik Parmar',
+  'Anurag Yadav',
   'Prabhat  Patro',
   'Aditya Kushwah',
   'Aditya Shukla',
