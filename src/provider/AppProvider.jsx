@@ -31,7 +31,10 @@ export const AppProvider = ({ children }) => {
       );
 
       const response = await result.json();
-      setUserMeta(response);
+      // when database doesn't exist
+      if (response) {
+        setUserMeta(response);
+      }
     };
     fetchChartData();
   }, []);
