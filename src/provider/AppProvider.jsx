@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { CATEGORY_MAP } from '../components/constant';
 
 export const AppContext = createContext();
@@ -24,6 +24,33 @@ export const AppProvider = ({ children }) => {
     return newList;
   };
 
+  useEffect(() => {
+    const fetchChartData = async () => {
+      const result = await fetch(
+        'https://ymht-6c9f4-default-rtdb.asia-southeast1.firebasedatabase.app/ymht1.json'
+      );
+
+      const response = await result.json();
+      setUserMeta(response);
+    };
+    fetchChartData();
+  }, []);
+
+  useEffect(() => {
+    const pushToFirebase = async () => {
+      const result = await fetch(
+        'https://ymht-6c9f4-default-rtdb.asia-southeast1.firebasedatabase.app/ymht1.json',
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userMeta),
+        }
+      );
+      const response = await result.json();
+    };
+
+    pushToFirebase();
+  }, [userMeta]);
   const onCheckboxClick = (ymhtName, category, isAdd) => {
     setUserMeta((oldMeta) => {
       return {
@@ -36,14 +63,9 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const transformedData = Object.entries(userMeta).map(([category, value]) => {
-    return { label: category, data: value.data };
-  });
-
   const contextValue = useMemo(() => {
-    return { transformedData, onCheckboxClick, setUserMeta, userMeta };
-    /* eslint-disable react-hooks/exhaustive-deps */
-  }, [transformedData]);
+    return { onCheckboxClick, setUserMeta, userMeta };
+  }, [userMeta]);
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 };
